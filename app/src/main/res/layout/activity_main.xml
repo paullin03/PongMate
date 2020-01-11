@@ -95,7 +95,7 @@
         app:layout_constraintVertical_bias="0.14" />
 
     <ImageView
-        android:id="@+id/player_img_1"
+        android:id="@+id/paddle_img_1"
         android:layout_width="77dp"
         android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -107,7 +107,7 @@
         />
 
     <ImageView
-        android:id="@+id/player_img_2"
+        android:id="@+id/paddle_img_2"
         android:layout_width="77dp"
         android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
