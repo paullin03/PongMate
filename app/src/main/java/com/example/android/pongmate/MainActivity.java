@@ -45,26 +45,40 @@ public class MainActivity extends AppCompatActivity {
   
     public void addPlayerOne(View view) {
         int val = Integer.parseInt(playerOneScore.getText().toString());
-        System.out.println(val);
         playerOneScore.setText(String.valueOf(val + 1));
+        switchServe();
     }
-  
+
+
     public void minusPlayerOne(View view) {
         int val = Integer.parseInt(playerOneScore.getText().toString());
-        System.out.println(val);
-        playerOneScore.setText(String.valueOf(val - 1));
+        if (val > 0){
+            playerOneScore.setText(String.valueOf(val - 1));
+            switchServe();
+        }
     }
 
     public void addPlayerTwo(View view) {
         int val = Integer.parseInt(playerTwoScore.getText().toString());
-        System.out.println(val);
         playerTwoScore.setText(String.valueOf(val + 1));
+        switchServe();
     }
 
     public void minusPlayerTwo(View view) {
         int val = Integer.parseInt(playerTwoScore.getText().toString());
-        System.out.println(val);
-        playerTwoScore.setText(String.valueOf(val - 1));
+        if (val > 0) {
+            playerTwoScore.setText(String.valueOf(val - 1));
+            switchServe();
+        }
+    }
+
+    private void switchServe() {
+        int playerOne = Integer.parseInt(playerOneScore.getText().toString());
+        int playerTwo = Integer.parseInt(playerTwoScore.getText().toString());
+        if((playerOne + playerTwo) % 2 == 0){
+            toggleImageVisibility(paddle_one);
+            toggleImageVisibility(paddle_two);
+        }
     }
 
     private void toggleImageVisibility(ImageView paddle) {
