@@ -102,14 +102,12 @@
         android:layout_height="37dp"
         android:onClick="addPlayerOne"
         android:text="+"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/net"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintBottom_toBottomOf="@+id/score_player_one"
+        app:layout_constraintEnd_toStartOf="@+id/score_player_one"
         app:layout_constraintLeft_toLeftOf="@id/score_player_one"
-        app:layout_constraintRight_toRightOf="@id/score_player_one"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/player_one"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintTop_toBottomOf="@+id/player_one"
+        app:layout_constraintVertical_bias="0.33" />
 
     <Button
         android:id="@+id/minus_player_one"
@@ -117,14 +115,12 @@
         android:layout_height="37dp"
         android:onClick="minusPlayerOne"
         android:text="-"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/net"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintBottom_toBottomOf="@+id/score_player_one"
+        app:layout_constraintEnd_toStartOf="@+id/score_player_one"
         app:layout_constraintLeft_toLeftOf="@id/score_player_one"
-        app:layout_constraintRight_toRightOf="@id/score_player_one"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/player_one"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintTop_toBottomOf="@+id/player_one"
+        app:layout_constraintVertical_bias="0.66" />
 
     <EditText
         android:id="@+id/player_two"
@@ -160,12 +156,11 @@
         android:layout_height="37dp"
         android:onClick="addPlayerTwo"
         android:text="+"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/score_player_two"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toEndOf="@+id/net"
-        app:layout_constraintTop_toTopOf="@id/player_two"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintStart_toEndOf="@+id/score_player_two"
+        app:layout_constraintTop_toBottomOf="@+id/player_two"
+        app:layout_constraintVertical_bias="0.32999998" />
 
     <Button
         android:id="@+id/minus_player_two"
@@ -173,33 +168,32 @@
         android:layout_height="37dp"
         android:onClick="minusPlayerTwo"
         android:text="-"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/score_player_two"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toEndOf="@+id/net"
-        app:layout_constraintTop_toTopOf="@id/player_two"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintStart_toEndOf="@+id/score_player_two"
+        app:layout_constraintTop_toBottomOf="@+id/player_two"
+        app:layout_constraintVertical_bias="0.65999997" />
 
     <ImageView
         android:id="@+id/paddle_img_1"
         android:layout_width="77dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/net"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score_player_one"
         app:srcCompat="@drawable/paddle" />
 
     <ImageView
         android:id="@+id/paddle_img_2"
         android:layout_width="77dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/net"
+        app:layout_constraintTop_toBottomOf="@+id/score_player_two"
         app:srcCompat="@drawable/paddle" />
 
     <Switch
@@ -213,24 +207,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="57dp"
-        android:layout_height="34dp"
+        android:id="@+id/eleven"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="11"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintEnd_toStartOf="@+id/net"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="55dp"
-        android:layout_height="40dp"
+        android:id="@+id/twenty_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="21"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.553"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/net"
         app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/reset_button"
         android:layout_width="wrap_content"
