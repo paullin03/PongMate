@@ -110,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void switchServe() {
         if((playerOneScore + playerTwoScore) % 2 == 0){
-            toggleImageVisibility(paddle_one);
-            toggleImageVisibility(paddle_two);
+            toggleImageVisibility(paddleOne);
+            toggleImageVisibility(paddleTwo);
         }
     }
 
