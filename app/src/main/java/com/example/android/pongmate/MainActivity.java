@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,12 +15,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-
+  
     private ImageView paddleOne, paddleTwo;
 
-    TextView playerOneScore;
+    TextView playerOneScoreText;
 
-    TextView playerTwoScore;
+    TextView playerTwoScoreText;
+  
+    Switch switches;
+  
+    int playerOneScore = 0;
+  
+    int playerTwoScore = 0;
+  
+    int goalScore = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,46 +40,60 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        playerOneScore = findViewById(R.id.score_player_one);
-        playerTwoScore = findViewById(R.id.score_player_two);
+        playerOneScoreText = findViewById(R.id.score_player_one);
+        playerTwoScoreText = findViewById(R.id.score_player_two);
 
         paddleOne = findViewById(R.id.paddle_img_1);
         paddleTwo = findViewById(R.id.paddle_img_2);
-
+        switches = findViewById(R.id.switch_cap);
+      
+        switches.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean is25Game) {
+                if (is25Game) {
+                    // The toggle is enabled
+                    goalScore = 25;
+                } else {
+                    // The toggle is disabled
+                    goalScore = 11;
+                }
+            }
+        });
         setServer();
     }
 
     public void addPlayerOne(View view) {
-        int val = Integer.parseInt(playerOneScore.getText().toString());
-        playerOneScore.setText(String.valueOf(val + 1));
+        playerOneScore++;
+        playerOneScoreText.setText(String.valueOf(playerOneScore));
         switchServe();
     }
 
     public void minusPlayerOne(View view) {
-        int val = Integer.parseInt(playerOneScore.getText().toString());
-        if (val > 0) {
-            playerOneScore.setText(String.valueOf(val - 1));
+        if (playerOneScore > 0){
+            playerOneScore--;
+            playerOneScoreText.setText(String.valueOf(playerOneScore));
             switchServe();
         }
     }
 
     public void addPlayerTwo(View view) {
-        int val = Integer.parseInt(playerTwoScore.getText().toString());
-        playerTwoScore.setText(String.valueOf(val + 1));
+        playerTwoScore++;
+        playerTwoScoreText.setText(String.valueOf(playerTwoScore));
         switchServe();
     }
 
     public void minusPlayerTwo(View view) {
-        int val = Integer.parseInt(playerTwoScore.getText().toString());
-        if (val > 0) {
-            playerTwoScore.setText(String.valueOf(val - 1));
+        if (playerTwoScore > 0) {
+            playerTwoScore--;
+            playerTwoScoreText.setText(String.valueOf(playerTwoScore));
             switchServe();
         }
     }
 
     public void resetScore(View view) {
-        playerOneScore.setText("0");
-        playerTwoScore.setText("0");
+        playerOneScore = 0;
+        playerTwoScore = 0;
+        playerOneScoreText.setText("0");
+        playerTwoScoreText.setText("0");
         setServer();
     }
 
@@ -84,11 +109,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void switchServe() {
-        int playerOne = Integer.parseInt(playerOneScore.getText().toString());
-        int playerTwo = Integer.parseInt(playerTwoScore.getText().toString());
-        if ((playerOne + playerTwo) % 2 == 0) {
-            toggleImageVisibility(paddleOne);
-            toggleImageVisibility(paddleTwo);
+        if((playerOneScore + playerTwoScore) % 2 == 0){
+            toggleImageVisibility(paddle_one);
+            toggleImageVisibility(paddle_two);
         }
     }
 

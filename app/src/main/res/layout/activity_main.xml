@@ -202,6 +202,35 @@
         app:layout_constraintStart_toEndOf="@+id/net"
         app:srcCompat="@drawable/paddle" />
 
+    <Switch
+        android:id="@+id/switch_cap"
+        android:layout_width="45dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="57dp"
+        android:layout_height="34dp"
+        android:text="11"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="55dp"
+        android:layout_height="40dp"
+        android:text="25"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <Button
         android:id="@+id/reset_button"
         android:layout_width="wrap_content"
