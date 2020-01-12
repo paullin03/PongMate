@@ -99,6 +99,7 @@
         android:id="@+id/plus_player_one"
         android:layout_width="42dp"
         android:layout_height="37dp"
+        android:onClick="addPlayerOne"
         android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/net"
@@ -107,13 +108,13 @@
         app:layout_constraintRight_toRightOf="@id/score_player_one"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/player_one"
-        app:layout_constraintVertical_bias="0.326"
-        android:onClick="addPlayerOne"/>
+        app:layout_constraintVertical_bias="0.326" />
 
     <Button
         android:id="@+id/minus_player_one"
         android:layout_width="42dp"
         android:layout_height="37dp"
+        android:onClick="minusPlayerOne"
         android:text="-"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/net"
@@ -122,8 +123,7 @@
         app:layout_constraintRight_toRightOf="@id/score_player_one"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/player_one"
-        app:layout_constraintVertical_bias="0.45"
-        android:onClick="minusPlayerOne"/>
+        app:layout_constraintVertical_bias="0.45" />
 
     <TextView
         android:id="@+id/player_two"
@@ -156,49 +156,78 @@
         android:id="@+id/plus_player_two"
         android:layout_width="42dp"
         android:layout_height="37dp"
+        android:onClick="addPlayerTwo"
         android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toEndOf="@+id/net"
         app:layout_constraintTop_toTopOf="@id/player_two"
-        app:layout_constraintVertical_bias="0.326"
-        android:onClick="addPlayerTwo"/>
+        app:layout_constraintVertical_bias="0.326" />
 
     <Button
         android:id="@+id/minus_player_two"
         android:layout_width="42dp"
         android:layout_height="37dp"
+        android:onClick="minusPlayerTwo"
         android:text="-"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.801"
         app:layout_constraintStart_toEndOf="@+id/net"
         app:layout_constraintTop_toTopOf="@id/player_two"
-        app:layout_constraintVertical_bias="0.45"
-        android:onClick="minusPlayerTwo"/>
+        app:layout_constraintVertical_bias="0.45" />
+
     <ImageView
         android:id="@+id/paddle_img_1"
         android:layout_width="77dp"
         android:layout_height="55dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/net"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/paddle"
-        android:layout_marginBottom="15dp"
-        />
+        app:srcCompat="@drawable/paddle" />
 
     <ImageView
         android:id="@+id/paddle_img_2"
         android:layout_width="77dp"
         android:layout_height="55dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/net"
-        app:srcCompat="@drawable/paddle"
-        android:layout_marginBottom="15dp"
-        />
+        app:srcCompat="@drawable/paddle" />
+
+    <Switch
+        android:id="@+id/switch_cap"
+        android:layout_width="45dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="57dp"
+        android:layout_height="34dp"
+        android:text="11"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="55dp"
+        android:layout_height="40dp"
+        android:text="25"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
