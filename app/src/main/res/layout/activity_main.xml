@@ -26,6 +26,7 @@
         android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -81,6 +82,50 @@
         app:layout_constraintVertical_bias="0.20" />
 
     <TextView
+        android:id="@+id/score_player_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:editable="true"
+        android:text="0"
+        android:textSize="150sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/net"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/player_one"
+        app:layout_constraintVertical_bias="0.20" />
+
+    <Button
+        android:id="@+id/plus_player_one"
+        android:layout_width="42dp"
+        android:layout_height="37dp"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/net"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintLeft_toLeftOf="@id/score_player_one"
+        app:layout_constraintRight_toRightOf="@id/score_player_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/player_one"
+        app:layout_constraintVertical_bias="0.326"
+        android:onClick="addPlayerOne"/>
+
+    <Button
+        android:id="@+id/minus_player_one"
+        android:layout_width="42dp"
+        android:layout_height="37dp"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/net"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintLeft_toLeftOf="@id/score_player_one"
+        app:layout_constraintRight_toRightOf="@id/score_player_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/player_one"
+        app:layout_constraintVertical_bias="0.45"
+        android:onClick="minusPlayerOne"/>
+
+    <TextView
         android:id="@+id/player_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -94,6 +139,44 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.20" />
 
+    <TextView
+        android:id="@+id/score_player_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:editable="true"
+        android:text="0"
+        android:textSize="150sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/net"
+        app:layout_constraintTop_toTopOf="@id/player_two"
+        app:layout_constraintVertical_bias="0.20" />
+
+    <Button
+        android:id="@+id/plus_player_two"
+        android:layout_width="42dp"
+        android:layout_height="37dp"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toEndOf="@+id/net"
+        app:layout_constraintTop_toTopOf="@id/player_two"
+        app:layout_constraintVertical_bias="0.326"
+        android:onClick="addPlayerTwo"/>
+
+    <Button
+        android:id="@+id/minus_player_two"
+        android:layout_width="42dp"
+        android:layout_height="37dp"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.801"
+        app:layout_constraintStart_toEndOf="@+id/net"
+        app:layout_constraintTop_toTopOf="@id/player_two"
+        app:layout_constraintVertical_bias="0.45"
+        android:onClick="minusPlayerTwo"/>
     <ImageView
         android:id="@+id/paddle_img_1"
         android:layout_width="77dp"
