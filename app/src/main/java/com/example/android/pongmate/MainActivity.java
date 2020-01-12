@@ -1,13 +1,13 @@
 package com.example.android.pongmate;
 
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
-import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,19 +15,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-  
+
     private ImageView paddleOne, paddleTwo;
+
+    private TextToSpeech textToSpeech;
 
     TextView playerOneScoreText;
 
     TextView playerTwoScoreText;
-  
+
     Switch switches;
-  
+
     int playerOneScore = 0;
-  
+
     int playerTwoScore = 0;
-  
+
     int goalScore = 0;
 
     @Override
@@ -40,13 +42,19 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        textToSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+            }
+        });
+
         playerOneScoreText = findViewById(R.id.score_player_one);
         playerTwoScoreText = findViewById(R.id.score_player_two);
 
         paddleOne = findViewById(R.id.paddle_img_1);
         paddleTwo = findViewById(R.id.paddle_img_2);
         switches = findViewById(R.id.switch_cap);
-      
+
         switches.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean is25Game) {
                 if (is25Game) {
@@ -68,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void minusPlayerOne(View view) {
-        if (playerOneScore > 0){
+        if (playerOneScore > 0) {
             playerOneScore--;
             playerOneScoreText.setText(String.valueOf(playerOneScore));
             switchServe();
@@ -109,9 +117,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void switchServe() {
-        if((playerOneScore + playerTwoScore) % 2 == 0){
+        if ((playerOneScore + playerTwoScore) % 2 == 0) {
             toggleImageVisibility(paddleOne);
             toggleImageVisibility(paddleTwo);
+            textToSpeech.speak("Switch Serve", TextToSpeech.QUEUE_FLUSH, null, null);
         }
     }
 
