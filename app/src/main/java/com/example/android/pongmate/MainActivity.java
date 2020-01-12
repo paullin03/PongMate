@@ -1,19 +1,22 @@
 package com.example.android.pongmate;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView paddle_one, paddle_two;
+
+    private ImageView paddleOne, paddleTwo;
+
     TextView playerOneScore;
+
     TextView playerTwoScore;
 
     @Override
@@ -29,30 +32,21 @@ public class MainActivity extends AppCompatActivity {
         playerOneScore = findViewById(R.id.score_player_one);
         playerTwoScore = findViewById(R.id.score_player_two);
 
-        paddle_one = findViewById(R.id.paddle_img_1);
-        paddle_two = findViewById(R.id.paddle_img_2);
+        paddleOne = findViewById(R.id.paddle_img_1);
+        paddleTwo = findViewById(R.id.paddle_img_2);
 
-        Random rand = new Random();
-        int rand_val = rand.nextInt(2);
-
-        if (rand_val == 0) {
-            toggleImageVisibility(paddle_two);
-        }
-        else {
-            toggleImageVisibility(paddle_one);
-        }
+        setServer();
     }
-  
+
     public void addPlayerOne(View view) {
         int val = Integer.parseInt(playerOneScore.getText().toString());
         playerOneScore.setText(String.valueOf(val + 1));
         switchServe();
     }
 
-
     public void minusPlayerOne(View view) {
         int val = Integer.parseInt(playerOneScore.getText().toString());
-        if (val > 0){
+        if (val > 0) {
             playerOneScore.setText(String.valueOf(val - 1));
             switchServe();
         }
@@ -72,22 +66,43 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void resetScore(View view) {
+        playerOneScore.setText("0");
+        playerTwoScore.setText("0");
+        setServer();
+    }
+
+    private void setServer() {
+        setNoServer();
+        int rand_val = new Random().nextInt(2);
+
+        if (rand_val == 0) {
+            toggleImageVisibility(paddleTwo);
+        } else {
+            toggleImageVisibility(paddleOne);
+        }
+    }
+
     private void switchServe() {
         int playerOne = Integer.parseInt(playerOneScore.getText().toString());
         int playerTwo = Integer.parseInt(playerTwoScore.getText().toString());
-        if((playerOne + playerTwo) % 2 == 0){
-            toggleImageVisibility(paddle_one);
-            toggleImageVisibility(paddle_two);
+        if ((playerOne + playerTwo) % 2 == 0) {
+            toggleImageVisibility(paddleOne);
+            toggleImageVisibility(paddleTwo);
         }
     }
 
     private void toggleImageVisibility(ImageView paddle) {
         if (paddle.getVisibility() == View.VISIBLE) {
             paddle.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             paddle.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void setNoServer() {
+        paddleOne.setVisibility(View.GONE);
+        paddleTwo.setVisibility(View.GONE);
     }
 
 }
