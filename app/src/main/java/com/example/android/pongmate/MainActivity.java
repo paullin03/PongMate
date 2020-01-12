@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +18,16 @@ public class MainActivity extends AppCompatActivity {
 
         paddle_one = findViewById(R.id.paddle_img_1);
         paddle_two = findViewById(R.id.paddle_img_2);
+
+        Random rand = new Random();
+        int rand_val = rand.nextInt(2);
+
+        if (rand_val == 0) {
+            toggleImageVisibility(paddle_two);
+        }
+        else {
+            toggleImageVisibility(paddle_one);
+        }
 
         View decorView = getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
