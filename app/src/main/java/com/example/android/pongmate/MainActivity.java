@@ -28,7 +28,11 @@ public class MainActivity extends AppCompatActivity {
   
     int playerTwoScore = 0;
   
-    int goalScore = 0;
+    int goalScore = 11;
+
+    int switchServiceAmount = 2;
+
+    boolean isDeuce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +55,12 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean is25Game) {
                 if (is25Game) {
                     // The toggle is enabled
-                    goalScore = 25;
+                    goalScore = 21;
+                    switchServiceAmount = 5;
                 } else {
                     // The toggle is disabled
                     goalScore = 11;
+                    switchServiceAmount = 2;
                 }
             }
         });
@@ -62,38 +68,60 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addPlayerOne(View view) {
-        playerOneScore++;
-        playerOneScoreText.setText(String.valueOf(playerOneScore));
-        switchServe();
+        changeScore(1,1);
     }
 
     public void minusPlayerOne(View view) {
         if (playerOneScore > 0){
-            playerOneScore--;
-            playerOneScoreText.setText(String.valueOf(playerOneScore));
-            switchServe();
+            changeScore(1,-1);
         }
     }
 
     public void addPlayerTwo(View view) {
-        playerTwoScore++;
-        playerTwoScoreText.setText(String.valueOf(playerTwoScore));
-        switchServe();
+        changeScore(2,1);
     }
 
     public void minusPlayerTwo(View view) {
         if (playerTwoScore > 0) {
-            playerTwoScore--;
-            playerTwoScoreText.setText(String.valueOf(playerTwoScore));
-            switchServe();
+            changeScore(2,-1);
         }
     }
 
+    public void changeScore(int player, int change){
+        if (player == 1) {
+            playerOneScore = playerOneScore + change;
+            playerOneScoreText.setText(String.valueOf(playerOneScore));
+        } else {
+            playerTwoScore = playerTwoScore + change;
+            playerTwoScoreText.setText(String.valueOf(playerTwoScore));
+        }
+
+        if (isDeuce) {
+            if (Math.abs(playerOneScore - playerTwoScore) > 1){
+                reset();
+            }
+        }
+        else if (playerOneScore == goalScore || playerTwoScore == goalScore) {
+            reset();
+        }
+
+        if (playerOneScore == goalScore - 1 && playerTwoScore == goalScore - 1){
+            isDeuce = true;
+        }
+
+        switchServe();
+    }
+
     public void resetScore(View view) {
+        reset();
+    }
+
+    private void reset(){
         playerOneScore = 0;
         playerTwoScore = 0;
         playerOneScoreText.setText("0");
         playerTwoScoreText.setText("0");
+        isDeuce = false;
         setServer();
     }
 
@@ -109,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void switchServe() {
-        if((playerOneScore + playerTwoScore) % 2 == 0){
+        if(isDeuce || (playerOneScore + playerTwoScore) % switchServiceAmount == 0){
             toggleImageVisibility(paddleOne);
             toggleImageVisibility(paddleTwo);
         }
